@@ -1,0 +1,20 @@
+version: '3.9'
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql-container
+    ports:
+      - "3306:3306" # host_port:container_port , host_port -> the port on your local machine(or the machine running docker) container_port->the port inside the docker container
+        # we can't access directly container port only we can access through host_port and it will map to container port
+    environment:
+      MYSQL_ROOT_PASSWORD: mypassword
+      MYSQL_DATABASE: online_book_store
+      MYSQL_USER: sipun
+      MYSQL_PASSWORD: root
+    volumes:
+      - mysql-data:/var/lib/mysql
+    restart: always
+volumes:
+   mysql-data:
+
+
